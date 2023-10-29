@@ -1,0 +1,20 @@
+App\Entity\Location:
+  properties:
+    latitude:
+      - Range:
+          min: -90
+          max: 90
+          groups: [new, edit]
+    longtitude:
+      - Range:
+          min: -180
+          max: 180
+          groups: [new, edit]
+
+App\Entity\Measurement:
+  properties:
+    celsius:
+      - Range:
+          min: -100
+          max: 70
+          groups: [new, edit]
