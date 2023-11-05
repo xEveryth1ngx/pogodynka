@@ -24,6 +24,11 @@
                     <div class="list-group">
                         <a class="bg-dark text-white list-group-item list-group-item-action" href="{{ path('app_location_index') }}">Locations</a>
                         <a class="bg-dark text-white list-group-item list-group-item-action" href="{{ path('app_measurement_index') }}">Measurements</a>
+                        {% if is_granted('ROLE_USER') %}
+                            <a class="bg-dark text-white list-group-item list-group-item-action" href="{{ path('app_logout') }}">Logout</a>
+                        {% else %}
+                            <a class="bg-dark text-white list-group-item list-group-item-action" href="{{ path('app_login') }}">Login</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
