@@ -36,6 +36,22 @@ class MeasurementRepository extends ServiceEntityRepository
         return $result;
     }
 
+    public function findByCountryAndCity($country, $city)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->join('m.location', 'l')
+            ->where('l.country = :country')
+            ->andWhere('l.city = :city')
+            ->andWhere('m.date > :now')
+            ->setParameter('country', $country)
+            ->setParameter('city', $city)
+            ->setParameter('now', new \DateTime());
+
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+
+        return $result;
+    }
 
 //    /**
 //     * @return Measurement[] Returns an array of Measurement objects

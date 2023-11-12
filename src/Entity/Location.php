@@ -102,6 +102,13 @@ class Location
         return $this->measurements;
     }
 
+    public function getFutureMeasurements(): Collection
+    {
+        return $this->measurements->filter(function (Measurement $measurement) {
+            return $measurement->getDate() >= new \DateTimeImmutable();
+        });
+    }
+
     public function addMeasurement(Measurement $measurement): static
     {
         if (!$this->measurements->contains($measurement)) {
